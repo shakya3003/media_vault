@@ -1,5 +1,7 @@
 # Secure Media Vault
 
+**Live Demo:** [https://aryan-vault.onrender.com/](https://aryan-vault.onrender.com/)
+
 ## Overview
 Secure Media Vault is a highly secure, Zero-Knowledge End-to-End Encryption (E2EE) platform designed for storing and sharing large binary files, including high-resolution video and audio. The application guarantees that files are encrypted client-side before transmission, ensuring that the server infrastructure remains entirely agnostic to the plaintext contents and user passwords.
 
