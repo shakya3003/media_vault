@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Media Vault (E2E)</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+    </div>
+    
+    <div class="glass-panel">
+        <h1>Secure Media Vault</h1>
+        <p class="subtitle">Zero-Knowledge End-to-End Encryption</p>
+        
+        <div class="tabs">
+            <button type="button" class="tab active" id="tab-encrypt" onclick="setMode('encrypt')">Encrypt</button>
+            <button type="button" class="tab" id="tab-decrypt" onclick="setMode('decrypt')">Decrypt</button>
+        </div>
+
+        <form id="crypto-form">
+            <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file').click()">
+                <span class="drop-icon">📁</span>
+                <p id="file-name">Drag & Drop your media file here<br>or click to browse</p>
+                <input type="file" id="file" name="file" required hidden>
+            </div>
+            
+            <div class="toggle-group" id="cloud-toggle-group" style="margin: 15px 0; text-align: left; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                <label style="cursor: pointer; display: flex; align-items: center; gap: 10px; font-weight: 500;">
+                    <input type="checkbox" id="cloud-toggle" style="width: 18px; height: 18px; accent-color: #3b82f6;">
+                    ☁️ Upload to Cloud (Generate Shareable Link)
+                </label>
+                <p style="font-size: 11px; margin-top: 5px; color: #9ca3af;">File will be encrypted locally, then uploaded securely to AWS.</p>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Vault Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter a strong password (min 8 chars)" minlength="8" required>
+            </div>
+            
+            <button type="submit" class="primary-btn" id="submit-btn">Encrypt File Locally</button>
+        </form>
+
+        <div id="status" class="status hidden">
+            <span>🚀 Processing locally... Please wait.</span>
+            <div class="progress-bar-container" style="margin-top: 10px; background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; overflow: hidden;">
+                <div id="progress-bar" style="width: 0%; background: #3b82f6; height: 100%; transition: width 0.2s;"></div>
+            </div>
+            <p id="progress-text" style="font-size: 12px; margin-top: 5px; color: var(--text-muted);">0%</p>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
