@@ -29,6 +29,10 @@ if url and key:
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+@app.head("/")
+def health_check():
+    return {"status": "ok"}
+
 @app.get("/")
 def read_root():
     return RedirectResponse(url="/static/index.html")
